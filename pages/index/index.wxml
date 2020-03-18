@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+  <button type="primary" bindtap="btnClick">点击选择图片</button>
+  <button type="primary" bindtap="showInfo">显示信息</button>
+  <view>
+      <block wx:for= "{{result}}" wx:key >
+        <view class="textleft">
+          <text value="{{item}}"  >置信度：{{result[index].score}}</text>
+        </view>
+        <view class="textright">
+          <text value="{{item}}"  >品名：{{result[index].keyword}}  </text>
+        </view>
+      </block>
+  </view>
+</view>

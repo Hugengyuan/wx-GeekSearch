@@ -1,15 +1,41 @@
 <!--index.wxml-->
-<view class="container">
-  <button type="primary" bindtap="btnClick">点击选择图片</button>
+<view class="mainContainer">
+  <!--<button type="primary" bindtap="btnClick">点击选择图片</button>
   <button type="primary" bindtap="showInfo">显示信息</button>
   <view>
-      <block wx:for= "{{result}}" wx:key >
-        <view class="textleft">
+      <block wx:for= "{{result}}" wx:key="item" >
+        <view>
           <text value="{{item}}"  >置信度：{{result[index].score}}</text>
         </view>
-        <view class="textright">
+        <view>
           <text value="{{item}}"  >品名：{{result[index].keyword}}  </text>
         </view>
       </block>
+  </view>-->
+  <block >
+    <image src="../../images/navigationBackground.png" mode="widthFix"class="navigationBackground" ></image>
+  </block>
+
+   <view class="indicator-container">
+    <swiper indicator-dots="true" autoplay="true" duration="1000">
+      <block wx:for="{{background}}" wx:key="item" >
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" mode="widthFix"></image>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
+
+
+  <view class="content">
+    <view class="selection">
+      <block wx:for="{{selection}}" wx:key="item">
+        <view class="selection-item" bindtap="selectionClick">
+          <image src="{{item.url}}" class="selection-image" mode="heightFix" data-type="{{item.type}}"></image>
+        </view>
+      </block>
+    </view>
+  </view>
+
+ 
 </view>

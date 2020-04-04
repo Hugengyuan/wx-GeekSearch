@@ -1,0 +1,77 @@
+page{
+  width: 100%;
+  height: 100%;
+}
+.userContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+
+}
+
+.navigationBackground{
+  width: 100%;
+  border-bottom-left-radius: 100rpx;
+  border-bottom-right-radius: 100rpx;
+}
+
+.userInfo{
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0px 2px 5px 5px rgba(136, 136, 136, 0.63);
+  border-radius: 5rpx;
+  padding: 20rpx;
+}
+
+.userAvatar{
+  height: 140rpx;
+  width: 140rpx;
+  padding: 20rpx;
+  border-radius: 70rpx;
+}
+
+.userNickName{
+  align-self: center;
+  position: relative;
+  left: 40rpx;
+}
+
+
+.userService{
+  padding-top: 50rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userService-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  border-top: 1rpx solid rgba(136, 136, 136, 0.63);
+}
+
+.userService-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width:90%;
+}
+
+.userService-icon{
+  width: 100rpx;
+}
+
+.arrow_right{
+  width: 40rpx;
+}

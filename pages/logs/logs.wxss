@@ -1,8 +1,5 @@
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
-}
-.log-item {
-  margin: 10rpx;
+.container{
+  height: 100%;
+  width: 100%;
+  background-color: purple;
 }

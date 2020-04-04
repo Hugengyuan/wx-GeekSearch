@@ -1,0 +1,36 @@
+<view class="userContainer">
+  <block>
+    <image src="../../images/navigationBackground.png" mode="widthFix" class="navigationBackground"></image>
+  </block>
+  <view class="userInfo">
+    <view>
+      <image src="{{avatarUrl}}" class="userAvatar"></image>
+    </view>
+    <view class="userNickName">
+      <text>{{nickName}}</text>
+    </view>
+  </view>
+  <view class="userService">
+    <view class="userService-item" bindtap="historyClick">
+      <view class="userService-header">
+        <image src="../../images/icons/service_history.png" mode="widthFix" class="userService-icon"></image>
+        <text>浏览历史</text>
+      </view>
+      <image src="../../images/icons/arrow_right.png" mode="widthFix" class="arrow_right"></image>
+    </view>
+    <view class="userService-item">
+      <view class="userService-header">
+        <image src="../../images/icons/service_like.png" mode="widthFix" class="userService-icon"></image>
+        <text>我的收藏</text>
+      </view>
+      <image src="../../images/icons/arrow_right.png" mode="widthFix" class="arrow_right"></image>
+    </view>
+    <view class="userService-item">
+      <view class="userService-header">
+        <image src="../../images/icons/service_about.png" mode="widthFix" class="userService-icon"></image>
+        <text>关于</text>
+      </view>
+      <image src="../../images/icons/arrow_right.png" mode="widthFix" class="arrow_right"></image>
+    </view>
+  </view>
+</view>

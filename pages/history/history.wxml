@@ -1,0 +1,19 @@
+<!--pages/history/history.wxml-->
+<view class="mainContainer">
+
+  <view class="recordContainer">
+    <block wx:for="{{result}}" wx:for-item="dateitem" wx:for-index="resultindex">
+      <view class="dateContainer">
+        <view class="date">
+          {{list[resultindex]._id}}
+        </view>
+      </view>
+      <block wx:for="{{result[resultindex]}}" wx:for-item="resultitem">
+        <view>
+          <image src="{{resultitem.fileID}}" mode="widthFix" class="recordimage" data-fileID="{{resultitem.fileID}}" data-type="{{resultitem.type}}" data-id="{{resultitem._id}}" bindtap="historyClick">
+          </image>
+        </view>
+      </block>
+    </block>
+  </view>
+</view>

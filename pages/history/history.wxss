@@ -1,0 +1,29 @@
+/* pages/history/history.wxss */
+.mainContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dateContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.recordContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.recordimage{
+  margin: 20rpx;
+  height: 200rpx;
+  width: 200rpx;
+
+}

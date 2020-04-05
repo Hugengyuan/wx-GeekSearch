@@ -1,12 +1,12 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/user/user",
     "pages/logs/logs",
     "pages/info/info",
-    "pages/history/history"
-    
+    "pages/history/history",
+    "pages/like/like",
+    "pages/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",

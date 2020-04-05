@@ -1,0 +1,9 @@
+<!--pages/about/about.wxml-->
+<view class="mainContainer">
+  <text class="abouttext">
+  本小程序所用icon图片等均为开放版权平台提供
+  图片识别接口由百度AI开放平台提供
+  制作人：华北电力大学 胡耿源
+  联系方式：hugengyuan@outlook.com
+  </text>
+</view>

@@ -35,5 +35,15 @@ Page({
     wx.navigateTo({
       url: '../history/history',
     })
+  },
+  likeClick: function () {
+    wx.navigateTo({
+      url: '../like/like',
+    })
+  },
+  aboutClick: function () {
+    wx.navigateTo({
+      url: '../about/about',
+    })
   }
 })

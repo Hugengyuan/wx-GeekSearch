@@ -1,21 +1,20 @@
 <view class="infoContainer">
   <view class="info">
+  <image class="item-like" bindtap="updateLike" id="like"src="../../images/icons/like_checked.png" wx:if="{{like==true}}" mode="aspectFill"></image>
+          <image class="item-like" bindtap="updateLike" id="dislike"src="../../images/icons/like_unchecked.png" wx:elif="{{like==false}}" mode="aspectFill"></image>
     <view class="image-container">
       <image src="{{tempFilePath}}" class="image" mode="aspectFill">
       </image>
     </view>
     <view class="result">
-
       <block wx:if="{{result.length}}">
-
         <view class="result-item">
           <!-- bindtap="listTap" -->
           <text class="item-name" wx:if="{{result[0].keyword}}">{{result[0].keyword}}</text>
           <text class="item-name" wx:elif="{{result[0].name}}">{{result[0].name}}</text>
           <text class="item-score" wx:if="{{result[0].score}}">相似度：{{result[0].score}}</text>
           <text class="item-score" wx:elif="{{result[0].probability}}">相似度：{{result[0].probability}}</text>
-          <image class="item-like" bindtap="updateLike" id="like"src="../../images/icons/like_checked.png" wx:if="{{like==true}}" mode="aspectFill"></image>
-          <image class="item-like" bindtap="updateLike" id="dislike"src="../../images/icons/like_unchecked.png" wx:elif="{{like==false}}" mode="aspectFill"></image>
+          
         </view>
         <view class="description" wx:if="{{result[0].baike_info.description}}">
           <view>
@@ -27,22 +26,13 @@
           </view>
         </view>
       </block>
-
       <block wx:if="{{result.length==null}}">
         <view class="result-item" data-index="{{index}}" bindtap="listTap">
           <text class="item-name" wx:if="{{result.wineNameCn}}">{{result.wineNameCn}}</text>
           <text class="item-name" wx:elif="{{result.currencyName}}">{{result.currencyName}}</text>
           <text class="item-name" wx:elif="{{result.landmark}}">{{result.landmark}}</text>
         </view>
-
       </block>
-
     </view>
-
-
-
-
-
   </view>
-
 </view>

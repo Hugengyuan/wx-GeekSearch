@@ -47,6 +47,8 @@
 }
 
 .item-like {
+  position: relative;
+  left:50rpx;
   width: 50rpx;
   height: 50rpx;
 }

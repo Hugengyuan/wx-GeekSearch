@@ -72,10 +72,9 @@ Page({
         console.log("获取失败")
       },
       complete() {
-        wx.hideLoading();
+        
       }
     })
-
     this.setData({
       tempFilePath: options.tempFilePath,
       type: options.type,
@@ -106,6 +105,10 @@ Page({
       })
     }
 
+  },
+
+  onReady: function(){
+    wx.hideLoading();
   },
 
   //存入数据库

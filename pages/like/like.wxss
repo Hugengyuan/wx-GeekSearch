@@ -6,7 +6,11 @@
   flex-direction: column;
   justify-content: center;
 }
-
+.ifnull{
+  text-align: center;
+  width: 100%;
+  color: #b2b2b2;
+}
 .recordContainer {
   width: 100%;
   display: flex;
@@ -17,7 +21,6 @@
 
 .contentContainer{
   width: 92%;
-  border-left: 2px solid #b2b2b2;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -32,8 +35,6 @@
   flex-direction: row;
   justify-content: flex-start;
 }
-
-
 
 .date{
   margin-left: 10rpx;
@@ -58,7 +59,7 @@
 
 .recordimage {
   margin: 15rpx;
-  height: 200rpx;
+  height: 150rpx;
   width: 200rpx;
 }
 

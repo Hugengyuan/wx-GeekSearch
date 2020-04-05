@@ -39,6 +39,7 @@ page{
   align-self: center;
   position: relative;
   left: 40rpx;
+  font-size: 20pt;
 }
 
 
@@ -57,6 +58,7 @@ page{
   justify-content: space-around;
   align-items: center;
   width: 80%;
+  height: 100rpx;
   border-top: 1rpx solid rgba(136, 136, 136, 0.63);
 }
 
@@ -69,9 +71,9 @@ page{
 }
 
 .userService-icon{
-  width: 100rpx;
+  width: 60rpx;
 }
 
 .arrow_right{
-  width: 40rpx;
+  width: 30rpx;
 }

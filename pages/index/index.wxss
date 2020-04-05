@@ -21,13 +21,16 @@
   width: 80%;
   position: relative;
   bottom: 50rpx;
-  
 }
+
 .slide-image {
 	width: 100%;
   border-radius: 50rpx;
 }
 
+.content{
+  width: 95%;
+}
 
 .selection{
   display: flex;
@@ -36,7 +39,6 @@
   justify-content: space-evenly;
   position: relative;
   bottom: 50rpx;
-  
 }
 
 .selection-item{
@@ -52,7 +54,7 @@
 }
 
 .selection-image{
-  height: 170rpx;
+  height: 160rpx;
   border-radius: 50rpx;
   box-shadow: 0px 2px 3px 3px rgba(136, 136, 136, 0.349);
 }

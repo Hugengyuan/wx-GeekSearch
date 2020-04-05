@@ -9,57 +9,47 @@ Page({
 
   data: {
     result: [],
-    list: [],
     tempFilePath: '',
     fileID: '',
   },
 
   onLoad: function(options) {
+
+
+  },
+
+  onShow: function(){
     wx.showLoading({
       title: '载入中',
     })
     var that = this;
     //获取用户历史纪录中的所有日期
-    db.collection('history').aggregate()
 
-      .group({
-        _id: '$date'
-      })
-      .sort({
-        _id: -1,
-      })
-      .end()
-      .then(res => {
-        that.setData({
-          list: res.list
-        })
-
-      })
-      .then(res => {
-        //为解决循环异步问题引入async和await关键字
-        
-        async function test() {
-          for (var i = 0; i < that.data.list.length; i++) {
-            let a = await db.collection('history').where({
-                _openid: '{{app.globalData._openid}}',
-                date: that.data.list[i]._id
-              })
-              .get()
-              .then(res => {
-                that.data.result.push(res.data)
-              })
-          }
+    db.collection('history').where({
+      _openid: '{{app.globalData._openid}}',
+      like: true
+    })
+      .get({
+        success: function (res) {
+          // res.data 是包含以上定义的两条记录的数组
+          that.data.result.push(res.data)
           that.setData({
             result: that.data.result
           })
-        }
-        test();
+          console.log(that.data.result)
+        },
       })
+    wx.hideLoading()
   },
-  onReady: function(){
-    wx.hideLoading();
+
+
+  onHide: function(){
+    this.data.result = [];
+    this.setData({
+      result: this.data.result,
+    })
   },
-  historyClick: function(options) {
+  likeClick: function(options) {
     var that = this;
     this.setData({
       fileID: options.currentTarget.dataset.fileid,

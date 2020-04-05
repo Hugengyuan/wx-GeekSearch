@@ -1,21 +1,8 @@
 <!--index.wxml-->
 <view class="mainContainer">
-  <!--<button type="primary" bindtap="btnClick">点击选择图片</button>
-  <button type="primary" bindtap="showInfo">显示信息</button>
-  <view>
-      <block wx:for= "{{result}}" wx:key="item" >
-        <view>
-          <text value="{{item}}"  >置信度：{{result[index].score}}</text>
-        </view>
-        <view>
-          <text value="{{item}}"  >品名：{{result[index].keyword}}  </text>
-        </view>
-      </block>
-  </view>-->
   <block >
     <image src="../../images/navigationBackground.png" mode="widthFix"class="navigationBackground" ></image>
   </block>
-
    <view class="indicator-container">
     <swiper indicator-dots="true" autoplay="true" duration="1000">
       <block wx:for="{{background}}" wx:key="item" >
@@ -25,8 +12,6 @@
       </block>
     </swiper>
   </view>
-
-
   <view class="content">
     <view class="selection">
       <block wx:for="{{selection}}" wx:key="item">
@@ -36,6 +21,4 @@
       </block>
     </view>
   </view>
-
- 
 </view>

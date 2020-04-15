@@ -1,5 +1,5 @@
 const app = getApp()
-
+var util = require('../../utils/util.js')
 const db = wx.cloud.database({
   env: 'geeksearch-n0n7s'
 })
@@ -38,43 +38,49 @@ Page({
       icon: 'loading',
     })
     //请求百度API
-    wx.request({
-      url: 'https://aip.baidubce.com/rest/2.0/image-classify' + options.type + '?access_token=' + app.globalData.accessToken,
-      data: {
-        image: app.globalData.base64,
-        baike_num: 5
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success(res) {
-        that.setData({
-          result: res.data.result,
+    new Promise((reject, resolve) => {
+        wx.request({
+          url: 'https://aip.baidubce.com/rest/2.0/image-classify' + options.type + '?access_token=' + app.globalData.accessToken,
+          data: {
+            image: app.globalData.base64,
+            baike_num: 5
+          },
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          success(res) {
+            that.setData({
+              result: res.data.result,
+            })
+            for (var i = 0; i < res.data.result.length; i++) {
+              //对data赋值必须要setData，否则不会将数据赋值给视图层
+              arr = 'result[' + i + '].score'
+              //此处修改score的类型为字符串
+              //当是动物识别时返回的score是String，其他的都为unit32
+              if (res.data.result[i].score.constructor === String) {
+                that.setData({
+                  [arr]: parseFloat(res.data.result[i].score).toFixed(2)
+                })
+              } else {
+                that.setData({
+                  [arr]: res.data.result[i].score.toFixed(2)
+                })
+              }
+            };
+            resolve();
+          },
+          fail(res) {
+            console.log("获取失败")
+            reject();
+          },
+          complete() {}
         })
-        for (var i = 0; i < res.data.result.length; i++) {
-          //对data赋值必须要setData，否则不会将数据赋值给视图层
-          arr = 'result[' + i + '].score'
-          //此处修改score的类型为字符串
-          //当是动物识别时返回的score是String，其他的都为unit32
-          if (res.data.result[i].score.constructor === String) {
-            that.setData({
-              [arr]: parseFloat(res.data.result[i].score).toFixed(2)
-            })
-          } else {
-            that.setData({
-              [arr]: res.data.result[i].score.toFixed(2)
-            })
-          }
-        };
-      },
-      fail(res) {
-        console.log("获取失败")
-      },
-      complete() {
-        
-      }
-    })
+      })
+      .then(function() {
+        wx.hideLoading();
+      })
+
     this.setData({
       tempFilePath: options.tempFilePath,
       type: options.type,
@@ -86,20 +92,19 @@ Page({
 
     if (options.prevPage == 'index') {
       this.addRecord();
-    }
-    else{
+    } else {
       this.setData({
         id: options.id
       })
       db.collection('history').doc(options.id).get({
-        success: function (res) {
+        success: function(res) {
           // res.data 包含该记录的数据
           console.log(res.data)
           that.setData({
             like: res.data.like
           })
         },
-        fail(res){
+        fail(res) {
           console.log(res)
         }
       })
@@ -107,7 +112,7 @@ Page({
 
   },
 
-  onReady: function(){
+  onReady: function() {
     wx.hideLoading();
   },
 
@@ -140,7 +145,7 @@ Page({
         // data 字段表示需新增的 JSON 数据
         data: {
           // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
-          date: new Date().toLocaleDateString(),
+          date: util.formatTime(new Date()).slice(0,10),
           tempFilePath: that.data.tempFilePath,
           fileID: that.data.fileID,
           type: that.data.type,
@@ -174,15 +179,14 @@ Page({
           console.log(res.data)
         }
       })
-    }
-    else{
+    } else {
       db.collection('history').doc(that.data.id).update({
         // data 传入需要局部更新的数据
         data: {
           // 表示将 done 字段置为 true
           like: false
         },
-        success: function (res) {
+        success: function(res) {
           that.setData({
             like: false
           })

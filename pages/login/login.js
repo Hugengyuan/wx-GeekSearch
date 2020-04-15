@@ -15,11 +15,7 @@ Page({
           wx.getUserInfo({
             success: function (res) {
               //从数据库获取用户信息
-              that.queryUsreInfo();
-              //用户已经授权过
-              wx.switchTab({
-                url: '../index/index'
-              })
+              
             }
           });
         }

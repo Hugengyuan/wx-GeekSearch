@@ -3,12 +3,12 @@
     <image src="../../images/navigationBackground.png" mode="widthFix" class="navigationBackground"></image>
   </block>
   <view class="userInfo">
-    <view>
-      <image src="{{avatarUrl}}" class="userAvatar"></image>
-    </view>
-    <view class="userNickName">
-      <text>{{nickName}}</text>
-    </view>
+      <view>
+        <image src="{{avatarUrl}}" class="userAvatar"></image>
+      </view>
+      <view class="userNickName">
+        <text>{{nickName}}</text>
+      </view>
   </view>
   <view class="userService">
     <view class="userService-item" bindtap="historyClick">

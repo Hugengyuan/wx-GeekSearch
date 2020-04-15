@@ -20,8 +20,9 @@ Page({
     })
     var that = this;
     //获取用户历史纪录中的所有日期
-    db.collection('history').aggregate()
-
+    db.collection('history')
+      .aggregate()
+      
       .group({
         _id: '$date'
       })
@@ -33,11 +34,11 @@ Page({
         that.setData({
           list: res.list
         })
-
+        console.log(that.data.list)
       })
       .then(res => {
         //为解决循环异步问题引入async和await关键字
-        
+
         async function test() {
           for (var i = 0; i < that.data.list.length; i++) {
             let a = await db.collection('history').where({
@@ -53,10 +54,12 @@ Page({
             result: that.data.result
           })
         }
+
         test();
+
       })
   },
-  onReady: function(){
+  onReady: function() {
     wx.hideLoading();
   },
   historyClick: function(options) {

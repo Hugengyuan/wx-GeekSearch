@@ -14,7 +14,8 @@ Page({
    */
   onLoad: function (options) {
     //判断用户是否存在
-    if (app.globalData.userInfo == null) {
+    console.log(app.globalData.userInfo)
+    if (app.globalData.userInfo.length == 0) {
       wx.redirectTo({
         url: '../login/login',
         success: function (res) { },

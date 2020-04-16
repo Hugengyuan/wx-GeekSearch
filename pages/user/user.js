@@ -12,39 +12,39 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    //判断用户是否存在
-    console.log(app.globalData.userInfo)
-    if (app.globalData.userInfo.length == 0) {
-      wx.redirectTo({
-        url: '../login/login',
-        success: function (res) { },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
-    }
-    else{
+  onLoad: function(options) {
+
+  },
+  onShow: function() {
+    if (this.data.avatarUrl == "") {
       this.setData({
         nickName: app.globalData.userInfo.nickName,
         avatarUrl: app.globalData.userInfo.avatarUrl,
       })
     }
-
-    
+    this.onLoad()
   },
-  historyClick:function(){
+  loginClick: function() {
+    wx.navigateTo({
+      url: '../login/login',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  historyClick: function() {
     wx.navigateTo({
       url: '../history/history',
     })
   },
-  likeClick: function () {
+  likeClick: function() {
     wx.navigateTo({
       url: '../like/like',
     })
   },
-  aboutClick: function () {
+  aboutClick: function() {
     wx.navigateTo({
       url: '../about/about',
     })
-  }
+  },
 })

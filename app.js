@@ -38,7 +38,7 @@ App({
 
   //全局变量
   globalData: {
-    userInfo: [],
+    userInfo: {},
     _openid: '',
     accessToken: '',
     base64: '',

@@ -3,11 +3,9 @@
     <image src="../../images/navigationBackground.png" mode="widthFix" class="navigationBackground"></image>
   </block>
   <view class="userInfo">
-      <view>
-        <image src="{{avatarUrl}}" class="userAvatar"></image>
-      </view>
+      <open-data type="userAvatarUrl" class="userAvatar"></open-data>
       <view class="userNickName">
-        <text>{{nickName}}</text>
+        <open-data type="userNickName" lang="zh_CN"></open-data>
       </view>
   </view>
   <view class="userService">
@@ -33,4 +31,5 @@
       <image src="../../images/icons/arrow_right.png" mode="widthFix" class="arrow_right"></image>
     </view>
   </view>
+
 </view>

@@ -1,12 +1,16 @@
 //app.js
 App({
+  globalData: {
+    userInfo: {},
+    _openid: '',
+    accessToken: '',
+    base64: '',
+    filePath: '',
+  },
 
   onLaunch: function() {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
+    //变量声明
     var that = this;
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
 
     //请求access_Token
     wx.request({
@@ -19,12 +23,14 @@ App({
       fail: function(res) {
         console.log("获取access_Token失败!")
       },
-
     })
+
     //云数据库初始化
     wx.cloud.init({
       env: 'geeksearch-n0n7s'
     })
+    
+    //云函数调用
     wx.cloud.callFunction({
       // 云函数名称
       name: 'getUserOpenId',
@@ -35,14 +41,4 @@ App({
       fail: console.error
     })
   },
-
-  //全局变量
-  globalData: {
-    userInfo: {},
-    _openid: '',
-    accessToken: '',
-    base64: '',
-    filePath: '',
-
-  }
 })

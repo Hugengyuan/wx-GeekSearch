@@ -10,6 +10,7 @@ Page({
     result: [],
     tempFilePath: '',
     fileID: '',
+    base64: '',
   },
 
   onShow: function() {
@@ -75,12 +76,8 @@ Page({
         })
         wx.navigateTo({
           url: '../info/info?type=' + options.currentTarget.dataset.type + '&tempFilePath=' + options.currentTarget.dataset.fileid + '&prevPage=history' + '&id=' + options.currentTarget.dataset.id,
-          success: function(res) {
-            console.log("yes")
-          },
-          fail: function(res) {
-            console.log("wrong")
-          },
+          success: function(res) {},
+          fail: function(res) {},
           complete: function(res) {},
         })
       })

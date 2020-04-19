@@ -1,6 +1,6 @@
 <view class="infoContainer">
   <view class="info">
-  <image class="item-like" bindtap="updateLike" id="like"src="../../images/icons/like_checked.png" wx:if="{{like==true}}" mode="aspectFill"></image>
+  <image class="item-like" bindtap="updateLike" id="like" src="../../images/icons/like_checked.png" wx:if="{{like==true}}" mode="aspectFill"></image>
           <image class="item-like" bindtap="updateLike" id="dislike"src="../../images/icons/like_unchecked.png" wx:elif="{{like==false}}" mode="aspectFill"></image>
     <view class="image-container">
       <image src="{{tempFilePath}}" class="image" mode="aspectFill">

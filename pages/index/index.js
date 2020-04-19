@@ -16,7 +16,7 @@ Page({
   },
 
   onLoad: function() {
-    
+
   },
   //当点击了选项后的事件处理函数
   selectionClick: function(e) {

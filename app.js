@@ -1,7 +1,6 @@
 //app.js
 App({
   globalData: {
-    userInfo: {},
     _openid: '',
     accessToken: '',
     base64: '',

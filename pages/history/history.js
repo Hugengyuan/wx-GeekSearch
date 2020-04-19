@@ -15,14 +15,15 @@ Page({
   },
 
   onLoad: function(options) {
+    var that = this;
+    
     wx.showLoading({
       title: '载入中',
     })
-    var that = this;
+    
     //获取用户历史纪录中的所有日期
     db.collection('history')
       .aggregate()
-      
       .group({
         _id: '$date'
       })
@@ -38,8 +39,7 @@ Page({
       })
       .then(res => {
         //为解决循环异步问题引入async和await关键字
-
-        async function test() {
+        async function sortList() {
           for (var i = 0; i < that.data.list.length; i++) {
             let a = await db.collection('history').where({
                 _openid: '{{app.globalData._openid}}',
@@ -55,25 +55,24 @@ Page({
           })
           wx.hideLoading();
         }
-
-        test();
-
+        sortList();
       })
   },
-  onReady: function() {
-   
-  },
+
   onShow:function(){
     this.setData({
       tempFilePath: '',
       fileID: '',
     })
   },
+
   historyClick: function(options) {
     var that = this;
+
     this.setData({
       fileID: options.currentTarget.dataset.fileid,
     })
+
     new Promise((resolve, reject) => {
       wx.cloud.downloadFile({
         fileID: that.data.fileID, // 文件 ID
@@ -101,20 +100,15 @@ Page({
           console.log(res)
         }
       })
+
       wx.navigateTo({
         url: '../info/info?type=' + options.currentTarget.dataset.type + '&tempFilePath=' + options.currentTarget.dataset.fileid + '&prevPage=history' + '&id=' + options.currentTarget.dataset.id,
         success: function(res) {
-          console.log("yes")
         },
         fail: function(res) {
-          console.log("wrong")
         },
         complete: function(res) {},
       })
     })
-
-
-
   }
-
 })

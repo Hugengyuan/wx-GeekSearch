@@ -8,10 +8,6 @@ const history = db.collection('history')
 
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     result: [{
       name: '',
@@ -19,6 +15,7 @@ Page({
       bake_info: [],
     }],
     tempFilePath: '', //  本地暂存路径
+    base64: '',
     fileID: '', //存储路径
     like: '',
     type: '',
@@ -26,10 +23,7 @@ Page({
     id: '',
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
+  onLoad: function(e) {
     var that = this;
     var arr;
     //显示loading
@@ -40,7 +34,7 @@ Page({
     //请求百度API
     new Promise((reject, resolve) => {
         wx.request({
-          url: 'https://aip.baidubce.com/rest/2.0/image-classify' + options.type + '?access_token=' + app.globalData.accessToken,
+          url: 'https://aip.baidubce.com/rest/2.0/image-classify' + e.type + '?access_token=' + app.globalData.accessToken,
           data: {
             image: app.globalData.base64,
             baike_num: 5
@@ -78,25 +72,23 @@ Page({
           complete() {}
         })
       })
-      .then(function() {
-
-      })
+      
 
     this.setData({
-      tempFilePath: options.tempFilePath,
-      type: options.type,
+      tempFilePath: e.tempFilePath,
+      type: e.type,
       like: false,
     })
     //info页面有可能是从index或者history页面跳转而来
     //只有从index页面的跳转才添加记录
 
-    if (options.prevPage == 'index') {
+    if (e.prevPage == 'index') {
       this.addRecord();
     } else {
       this.setData({
-        id: options.id
+        id: e.id
       })
-      db.collection('history').doc(options.id).get({
+      db.collection('history').doc(e.id).get({
         success: function(res) {
           // res.data 包含该记录的数据
           console.log(res.data)
@@ -156,7 +148,6 @@ Page({
 
   updateLike: function(e) {
     var that = this;
-    
     if (e.target.id == 'dislike') {
       wx.showToast({
         title: '加入收藏',
@@ -178,8 +169,7 @@ Page({
     } else {
       wx.showToast({
         title: '取消收藏',
-        icon: 'success',
-        
+        icon: 'success', 
       });
       db.collection('history').doc(that.data.id).update({
         // data 传入需要局部更新的数据

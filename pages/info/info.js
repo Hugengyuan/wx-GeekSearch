@@ -69,6 +69,7 @@ Page({
               }
             };
             resolve();
+            wx.hideLoading();
           },
           fail(res) {
             console.log("获取失败")
@@ -78,7 +79,7 @@ Page({
         })
       })
       .then(function() {
-        wx.hideLoading();
+
       })
 
     this.setData({
@@ -88,7 +89,6 @@ Page({
     })
     //info页面有可能是从index或者history页面跳转而来
     //只有从index页面的跳转才添加记录
-    console.log(options)
 
     if (options.prevPage == 'index') {
       this.addRecord();
@@ -109,12 +109,8 @@ Page({
         }
       })
     }
-
   },
 
-  onReady: function() {
-    wx.hideLoading();
-  },
 
   //存入数据库
   addRecord: function() {
@@ -122,50 +118,50 @@ Page({
     var temp;
     //cloudFilePath为格式化后的云端存储路径
     var cloudFilePath = 'images/' + that.data.tempFilePath.slice(11);
-
     //上传文件
-    var p = new Promise((resolve, reject) => {
-      wx.cloud.uploadFile({
-        cloudPath: cloudFilePath, // 上传至云端的路径
-        filePath: that.data.tempFilePath, // 小程序临时文件路径
-        success: res => {
-          // 返回文件 ID
-          resolve(res.fileID);
-        },
-        fail(res) {
-          reject(Error);
-        }
+    new Promise((resolve, reject) => {
+        wx.cloud.uploadFile({
+          cloudPath: cloudFilePath, // 上传至云端的路径
+          filePath: that.data.tempFilePath, // 小程序临时文件路径
+          success: res => {
+            // 返回文件 ID
+            resolve(res.fileID);
+          },
+          fail(res) {
+            reject(Error);
+          }
+        })
       })
-    })
-    p.then(function(fID) {
-      that.setData({
-        fileID: fID,
+      .then(function(fID) {
+        that.setData({
+          fileID: fID,
+        })
+        db.collection('history').add({
+          // data 字段表示需新增的 JSON 数据
+          data: {
+            // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
+            date: util.formatTime(new Date()).slice(0, 10),
+            tempFilePath: that.data.tempFilePath,
+            fileID: that.data.fileID,
+            type: that.data.type,
+            like: false
+          },
+          success: function(res) {
+            // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+            that.data.id = res._id
+          }
+        })
       })
-      db.collection('history').add({
-        // data 字段表示需新增的 JSON 数据
-        data: {
-          // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
-          date: util.formatTime(new Date()).slice(0,10),
-          tempFilePath: that.data.tempFilePath,
-          fileID: that.data.fileID,
-          type: that.data.type,
-          like: false
-        },
-        success: function(res) {
-          // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-          that.data.id = res._id
-        }
-      })
-    })
-
-
-
   },
 
   updateLike: function(e) {
     var that = this;
+    
     if (e.target.id == 'dislike') {
-
+      wx.showToast({
+        title: '加入收藏',
+        icon: 'success',
+      });
       db.collection('history').doc(that.data.id).update({
         // data 传入需要局部更新的数据
         data: {
@@ -180,6 +176,11 @@ Page({
         }
       })
     } else {
+      wx.showToast({
+        title: '取消收藏',
+        icon: 'success',
+        
+      });
       db.collection('history').doc(that.data.id).update({
         // data 传入需要局部更新的数据
         data: {

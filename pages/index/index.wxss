@@ -2,8 +2,13 @@
 
 /* 主轴是和排列方式相同的轴 */
 
+page {
+  width: 100%;
+  height: 100%;
+  background-color: #00000005;
+}
 
-.mainContainer{
+.mainContainer {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -11,37 +16,88 @@
   justify-content: center;
 }
 
-.navigationBackground{
+.navigationBackground {
   width: 100%;
-  border-bottom-left-radius: 100rpx;
-  border-bottom-right-radius: 100rpx;
+  position: relative;
 }
 
-.indicator-container{
-  width: 80%;
+.indicator-container {
+  width: 90%;
   position: relative;
-  bottom: 50rpx;
+  bottom: 250rpx;
 }
 
 .slide-image {
-	width: 100%;
-  border-radius: 50rpx;
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
 }
 
-.content{
-  width: 95%;
+.selection {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  bottom: 200rpx;
+  box-shadow: 1px 1px 3px 1px rgba(136, 136, 136, 0.425);
+  background-color: #fff;
+  border-radius: 10rpx;
+  
 }
 
-.selection{
+.leftcontainer {
+  height: 400rpx;
+  margin: 2%;
+  width: 46%;
+}
+.rightcontainer {
+  height: 400rpx;
+  margin: 2%;
+  width: 46%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.general {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+
+.car{
+width: 100%;
+  height: 48%;
+  border-radius: 10rpx;
+}
+.animal{
+width: 100%;
+  height: 48%;
+  border-radius: 10rpx;
+}
+
+.selectionimage {
+  height:200rpx;
+  margin: 2%;
+  width: 46%;
+  border-radius: 10rpx;
+}
+
+
+
+.bottomcontainer {
+
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  position: relative;
-  bottom: 50rpx;
 }
 
-.selection-item{
+
+.selection-item {
   width: 48%;
   height: auto;
   display: flex;
@@ -50,12 +106,5 @@
   justify-content: center;
   padding-top: 20rpx;
   padding-bottom: 20rpx;
-  
-}
-
-.selection-image{
-  height: 160rpx;
-  border-radius: 50rpx;
-  box-shadow: 0px 2px 3px 3px rgba(136, 136, 136, 0.349);
 }
 

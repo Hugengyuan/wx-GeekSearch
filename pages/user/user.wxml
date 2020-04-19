@@ -8,28 +8,33 @@
         <open-data type="userNickName" lang="zh_CN"></open-data>
       </view>
   </view>
+
   <view class="userService">
+  
     <view class="userService-item" bindtap="historyClick">
       <view class="userService-header">
         <image src="../../images/icons/service_history.png" mode="widthFix" class="userService-icon"></image>
-        <text>浏览历史</text>
+        <text class="userService-text">浏览历史</text>
       </view>
       <image src="../../images/icons/arrow_right.png" mode="widthFix" class="arrow_right"></image>
     </view>
+
     <view class="userService-item" bindtap="likeClick">
       <view class="userService-header">
         <image src="../../images/icons/service_like.png" mode="widthFix" class="userService-icon"></image>
-        <text>我的收藏</text>
+        <text class="userService-text">我的收藏</text>
       </view>
       <image src="../../images/icons/arrow_right.png" mode="widthFix" class="arrow_right"></image>
     </view>
+
     <view class="userService-item" bindtap="aboutClick">
       <view class="userService-header">
         <image src="../../images/icons/service_about.png" mode="widthFix" class="userService-icon"></image>
-        <text>关于</text>
+        <text class="userService-text">关于</text>
       </view>
       <image src="../../images/icons/arrow_right.png" mode="widthFix" class="arrow_right"></image>
     </view>
+
   </view>
 
 </view>

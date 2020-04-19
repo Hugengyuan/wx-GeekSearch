@@ -53,6 +53,7 @@ Page({
           that.setData({
             result: that.data.result
           })
+          wx.hideLoading();
         }
 
         test();
@@ -60,14 +61,20 @@ Page({
       })
   },
   onReady: function() {
-    wx.hideLoading();
+   
+  },
+  onShow:function(){
+    this.setData({
+      tempFilePath: '',
+      fileID: '',
+    })
   },
   historyClick: function(options) {
     var that = this;
     this.setData({
       fileID: options.currentTarget.dataset.fileid,
     })
-    var p = new Promise((resolve, reject) => {
+    new Promise((resolve, reject) => {
       wx.cloud.downloadFile({
         fileID: that.data.fileID, // 文件 ID
         success: res => {
@@ -83,7 +90,7 @@ Page({
         }
       })
     })
-    p.then(function() {
+    .then(function() {
       wx.getFileSystemManager().readFile({
         filePath: that.data.tempFilePath, //此处必须是本地路径
         encoding: 'base64', //编码格式

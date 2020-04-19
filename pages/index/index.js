@@ -8,51 +8,10 @@ Page({
     accessToken: '',
     tempFilePath: '',
     type: '',
-    background: [
+    swiper: [
       '../../images/swiper/swiper1.png',
       '../../images/swiper/swiper2.png',
       '../../images/swiper/swiper3.png',
-    ],
-    selection: [{
-        name: '通用识别',
-        url: '../../images/selection/general.png',
-        type: '/v2/advanced_general'
-      },
-      {
-        name: '汽车识别',
-        url: '../../images/selection/car.png',
-        type: '/v1/car'
-      },
-      {
-        name: '动物识别',
-        url: '../../images/selection/animal.png',
-        type: '/v1/animal'
-      },
-      {
-        name: '植物识别',
-        url: '../../images/selection/plant.png',
-        type: '/v1/plant'
-      },
-      {
-        name: '果蔬识别',
-        url: '../../images/selection/ingredient.png',
-        type: '/v1/classify/ingredient'
-      },
-      {
-        name: '红酒识别',
-        url: '../../images/selection/redwine.png',
-        type: '/v1/redwine'
-      },
-      {
-        name: '货币识别',
-        url: '../../images/selection/currency.png',
-        type: '/v1/currency'
-      },
-      {
-        name: '地标识别',
-        url: '../../images/selection/landmark.png',
-        type: '/v1/landmark'
-      },
     ],
     filePath: '',
 

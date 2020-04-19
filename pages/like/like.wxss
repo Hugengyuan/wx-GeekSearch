@@ -29,19 +29,6 @@
   margin-bottom: 20rpx;
 }
 
-.dateContainer {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-.date{
-  margin-left: 10rpx;
-  font-size: 14pt;
-  color: #b2b2b2;
-}
-
 .imageContainer {
   width: 100%;
   display: flex;
@@ -59,7 +46,7 @@
 
 .recordimage {
   margin: 15rpx;
-  height: 150rpx;
+  height: 200rpx;
   width: 200rpx;
 }
 

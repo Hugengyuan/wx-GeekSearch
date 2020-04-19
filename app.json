@@ -12,7 +12,7 @@
     "backgroundTextStyle": "light",
     "navigationStyle": "custom",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "即识",
+    "navigationBarTitleText": "即刻搜索",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

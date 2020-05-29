@@ -1,0 +1,138 @@
+/* pages/square/square.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  background-color: #00000005;
+}
+
+.mainContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.navigation {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #00000028;
+  position: fixed;
+  top: 0;
+}
+
+.navigationtext {
+  width: 80%;
+  text-align: center;
+  font-size: 18pt;
+}
+
+.hidenhead {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.hidenheadtext {
+  width: 80%;
+  color: #c5c5c5;
+  text-align: center;
+  font-size: 10pt;
+}
+
+.publish {
+  width: 10%;
+  padding: 50rpx;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+
+.messageContainer {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.message {
+  width: 95%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 1px 1px 3px 1px rgba(136, 136, 136, 0.425);
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+
+.infoContainer {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20rpx;
+  border-bottom: 1px solid #00000028;
+}
+
+.avatar {
+  width: 15%;
+  margin: 20rpx;
+}
+
+.nameContainer {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.time {
+  color: #c5c5c5;
+}
+
+.contentContainer {
+  width: 95%;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.contentImage {
+  width: 30%;
+  margin: 20rpx;
+}
+
+.rightContainer {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contentKeyword {
+  width: 80%;
+  font-size: 10pt;
+  color: #c5c5c5;
+}
+
+.content {
+  width: 60%;
+  font-size: 14pt;
+}

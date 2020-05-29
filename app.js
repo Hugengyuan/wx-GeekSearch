@@ -5,6 +5,8 @@ App({
     accessToken: '',
     base64: '',
     filePath: '',
+    nickName: "",
+    avatarUrl: "",
   },
 
   onLaunch: function() {
@@ -38,6 +40,21 @@ App({
         that.globalData._openid = res.result.openid
       },
       fail: console.error
+    })
+
+    wx.getSetting({
+      success(res) {
+        console.log(res)
+        if (res.authSetting['scope.userInfo']) {
+          //如果给了授权
+          wx.getUserInfo({
+            success: function (res) {
+              that.globalData.avatarUrl = res.userInfo.avatarUrl;
+              that.globalData.nickName = res.userInfo.nickName;
+            }
+          })
+        }
+      }
     })
   },
 })

@@ -34,10 +34,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  
 }
-
-
 
 .date{
   margin: 20rpx;
@@ -62,8 +59,8 @@
 
 .recordimage {
   margin: 20rpx;
-  height: 200rpx;
-  width: 200rpx;
+  height: 190rpx;
+  width: 190rpx;
 }
 
 .image {

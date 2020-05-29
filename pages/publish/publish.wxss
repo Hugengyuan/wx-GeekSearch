@@ -1,0 +1,78 @@
+/* pages/publish/publish.wxss */
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.mainContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.imageContainer{
+  width: 300rpx;
+  height: 300rpx;
+  background-color: #00000005;
+
+}
+
+.image{
+  width: 100%;
+  height: 100%;
+}
+
+.input {
+  padding: 5%;
+  width: 90%;
+  height: 300rpx;
+  background-color: #ffffff;
+  margin-bottom: 40rpx;
+}
+.selection{
+  margin-bottom: 20rpx;
+  width: 90%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.selectionText {
+  width: auto;
+  font-size: 18px;
+  color: #000;
+}
+
+.selectionImage {
+  padding-left: 10rpx;
+  padding-right: 20rpx;
+  width: 10%;
+}
+
+.location{
+  width: 60%;
+  font-size: 18px;
+  text-align: center;
+}
+
+.hashtag{
+  width: 60%;
+  height: 100rpx;
+  font-size: 18px;
+  padding-left: 20rpx;
+}
+
+.buttonContainer{
+  margin-top: 40rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+

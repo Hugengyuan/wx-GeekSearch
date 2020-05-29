@@ -2,28 +2,30 @@
 //获取应用实例
 const app = getApp()
 
+//tempFilePath 暂存路径
+//cloudFilePath 云端路径
+//type 识别类型
+
+
 Page({
   data: {
-    accessToken: '',
-    tempFilePath: '',
-    type: '',
     swiper: [
       '../../images/swiper/swiper1.png',
       '../../images/swiper/swiper2.png',
       '../../images/swiper/swiper3.png',
     ],
-    filePath: '',
+    base64: ''
   },
 
   onLoad: function() {
 
   },
   //当点击了选项后的事件处理函数
-  selectionClick: function(e) {
+  onSelection: function(options) {
     var that = this;
     //此处的tempfilepath和type均为info页面所要得知的参数
     var tempFilePath;
-    var type = e.target.dataset.type;
+    var type = options.target.dataset.type;
 
     //用户选择图片
     wx.chooseImage({
@@ -35,18 +37,18 @@ Page({
           encoding: 'base64', //编码格式
           success: res => {
             //base64编码为全局变量
-            app.globalData.base64 = res.data,
-              wx.navigateTo({
-                url: '../info/info?type=' + type + '&tempFilePath=' + tempFilePath + '&prevPage=index',
-                success: function(res) {},
-                fail: function(res) {},
-                complete: function(res) {},
-              })
+            app.globalData.base64 = res.data
+            
+            wx.navigateTo({
+              url: '../info/info?type=' + type + '&tempFilePath=' + tempFilePath + '&prevPage=index',
+              success: function(res) {},
+              fail: function(res) {},
+              complete: function(res) {},
+            })
           }
         })
       },
     })
-
   },
 
 

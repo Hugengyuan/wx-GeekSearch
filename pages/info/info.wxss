@@ -53,6 +53,14 @@
   height: 50rpx;
 }
 
+.item-share {
+  position: relative;
+  left:50rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+
 .description {
   width: 100%;
   display: flex;
@@ -62,6 +70,7 @@
 
 .description_header {
   width: 200rpx;
+  height: 100rpx;
 }
 
 .description_content {

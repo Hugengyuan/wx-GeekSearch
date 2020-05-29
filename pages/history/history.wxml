@@ -1,17 +1,15 @@
 <!--pages/history/history.wxml-->
 <view class="mainContainer">
-
   <view class="recordContainer">
     <view class="contentContainer"wx:for="{{result}}" wx:for-item="dateitem" wx:for-index="resultindex">
       <view class="dateContainer">
-        
         <view class="date">
           {{list[resultindex]._id}}
         </view>
       </view>
       <view class="imageContainer">
         <view  class="recordimage" wx:for="{{result[resultindex]}}" wx:for-item="resultitem">
-          <image src="{{resultitem.fileID}}" class="image" mode="aspectFill"  data-fileID="{{resultitem.fileID}}" data-type="{{resultitem.type}}" data-id="{{resultitem._id}}" bindtap="historyClick">
+          <image src="{{resultitem.fileID}}" class="image" mode="aspectFill"  data-fileID="{{resultitem.fileID}}" data-type="{{resultitem.type}}" data-id="{{resultitem._id}}"  bindtap="historyClick" bindlongpress="onLongHistory">
           </image>
         </view>
       </view>

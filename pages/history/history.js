@@ -2,11 +2,9 @@
 const db = wx.cloud.database({
   env: 'geeksearch-n0n7s'
 })
-const $ = db.command.aggregate
 const history = db.collection('history')
 const app = getApp();
 Page({
-
   data: {
     result: [],
     list: [],
@@ -25,7 +23,7 @@ Page({
     db.collection('history')
       .aggregate()
       .group({
-        _id: '$date'
+        _id: 'db.command.aggregate.date'
       })
       .sort({
         _id: -1,
@@ -102,13 +100,33 @@ Page({
       })
 
       wx.navigateTo({
-        url: '../info/info?type=' + options.currentTarget.dataset.type + '&tempFilePath=' + options.currentTarget.dataset.fileid + '&prevPage=history' + '&id=' + options.currentTarget.dataset.id,
+        url: '../info/info?type=' + options.currentTarget.dataset.type + '&tempFilePath=' + that.data.tempFilePath + '&prevPage=history' + '&id=' + options.currentTarget.dataset.id,
         success: function(res) {
         },
         fail: function(res) {
         },
         complete: function(res) {},
       })
+    })
+  },
+  onLongHistory: function(options){
+    wx.showModal({
+      title: '删除记录',
+      content: '是否删除记录',
+      success(res) {
+        if (res.confirm) {
+          db.collection('history').doc(options.currentTarget.dataset.id).remove({
+            success: function (res) {
+              wx.showToast({
+                title: '删除成功',
+              })
+              wx.hideToast()
+            }
+          })
+        } else if (res.cancel) {
+          
+        }
+      }
     })
   }
 })

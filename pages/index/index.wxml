@@ -12,32 +12,26 @@
       </block>
     </swiper>
   </view>
-
   <view class="selection">
     <view class="leftcontainer">
-     
-        <image src="../../images/selection/general.png" mode="scaleToFill"class="general" data-type="/v2/advanced_general" bindtap="selectionClick">
-
-        </image>
-      
+      <image src="../../images/selection/general.png" mode="scaleToFill" class="general" data-type="/v2/advanced_general" bindtap="onSelection">
+      </image>
     </view>
     <view class="rightcontainer">
-      <image src="../../images/selection/car.png" mode="scaleToFill"class="car" data-type="/v1/car" bindtap="selectionClick">
-        </image>
-      <image src="../../images/selection/animal.png" mode="scaleToFill"class="animal" data-type="/v1/animal" bindtap="selectionClick">
-        </image>
+      <image src="../../images/selection/car.png" mode="scaleToFill" class="car" data-type="/v1/car" bindtap="onSelection">
+      </image>
+      <image src="../../images/selection/animal.png" mode="scaleToFill" class="animal" data-type="/v1/animal" bindtap="onSelection">
+      </image>
     </view>
     <view class="bottomcontainer">
-      <image src="../../images/selection/plant.png" mode="scaleToFill"class="selectionimage" data-type="/v1/plant" bindtap="selectionClick">
-        </image>
-      <image src="../../images/selection/ingredient.png" mode="scaleToFill"class="selectionimage"data-type="/v1/classify/ingredient" bindtap="selectionClick">
-        </image>
-      <image src="../../images/selection/redwine.png" mode="scaleToFill"class="selectionimage"data-type="/v1/redwine" bindtap="selectionClick">
-        </image>
-      <image src="../../images/selection/currency.png" mode="scaleToFill"class="selectionimage" data-type="/v1/currency" bindtap="selectionClick">
-        </image>
+      <image src="../../images/selection/plant.png" mode="scaleToFill" class="selectionimage" data-type="/v1/plant" bindtap="onSelection">
+      </image>
+      <image src="../../images/selection/ingredient.png" mode="scaleToFill" class="selectionimage" data-type="/v1/classify/ingredient" bindtap="onSelection">
+      </image>
+      <image src="../../images/selection/redwine.png" mode="scaleToFill" class="selectionimage" data-type="/v1/redwine" bindtap="onSelection">
+      </image>
+      <image src="../../images/selection/currency.png" mode="scaleToFill" class="selectionimage" data-type="/v1/currency" bindtap="onSelection">
+      </image>
     </view>
-
   </view>
-
 </view>

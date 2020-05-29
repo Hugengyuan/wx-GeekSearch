@@ -1,0 +1,32 @@
+<!--pages/message/message.wxml-->
+<view class="mainContainer">
+  <view class="message">
+    <view class="infoContainer">
+      <image class="avatar" src="{{message.message_avatarURL}}" mode="widthFix"></image>
+      <view class="infoRightContainer">
+        <view class="nickName">{{message.message_username}}</view>
+        <view class="time">{{message.message_time}}</view>
+      </view>
+      <image class="delete" src="../../images/icons/delete.png" wx:if="{{ifdelete}}" mode="widthFix" bindtap="onDeleteMessage"></image>
+    </view>
+    <view class="contentContainer">
+      <image class="contentImage" src="{{message.message_picturepath}}" mode="widthFix"></image>
+      <view class="rightContainer">
+        <view class="contentKeyword">{{message.message_hashtag}}</view>
+        <view class="content">{{message.message_info}}</view>
+      </view>
+    </view>
+  </view>
+  <input class="commentinput" placeholder="说点什么吧……" bindinput="inputComment" bindconfirm="completeComment"></input>
+
+  <view class="commentContainer">
+    <view class="commentlist" wx:for="{{commentlist}}" wx:for-index="index" bindlongtap="onDeleteComment">
+      <image class="commentavatar" src="{{commentlist[index].comments_avatarUrl}}" mode="widthFix"></image>
+      <view class="rightContainer">
+        <view class="commentnickName">{{commentlist[index].comments_nickName}}</view>
+        <view class="commentcontent">{{commentlist[index].comments_info}}</view>
+        <view class="commenttime">{{commentlist[index].comments_time}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -26,53 +26,54 @@ Page({
   onLoad: function(e) {
     var that = this;
     var arr;
+    console.log(e)
     //显示loading
     wx.showLoading({
       title: '识别中',
       icon: 'loading',
     })
+
     //请求百度API
     new Promise((reject, resolve) => {
-        wx.request({
-          url: 'https://aip.baidubce.com/rest/2.0/image-classify' + e.type + '?access_token=' + app.globalData.accessToken,
-          data: {
-            image: app.globalData.base64,
-            baike_num: 5
-          },
-          method: 'POST',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded' // 默认值
-          },
-          success(res) {
-            that.setData({
-              result: res.data.result,
-            })
-            for (var i = 0; i < res.data.result.length; i++) {
-              //对data赋值必须要setData，否则不会将数据赋值给视图层
-              arr = 'result[' + i + '].score'
-              //此处修改score的类型为字符串
-              //当是动物识别时返回的score是String，其他的都为unit32
-              if (res.data.result[i].score.constructor === String) {
-                that.setData({
-                  [arr]: parseFloat(res.data.result[i].score).toFixed(2)
-                })
-              } else {
-                that.setData({
-                  [arr]: res.data.result[i].score.toFixed(2)
-                })
-              }
-            };
-            resolve();
-            wx.hideLoading();
-          },
-          fail(res) {
-            console.log("获取失败")
-            reject();
-          },
-          complete() {}
-        })
+      wx.request({
+        url: 'https://aip.baidubce.com/rest/2.0/image-classify' + e.type + '?access_token=' + app.globalData.accessToken,
+        data: {
+          image: app.globalData.base64,
+          baike_num: 5
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success(res) {
+          that.setData({
+            result: res.data.result,
+          })
+          for (var i = 0; i < res.data.result.length; i++) {
+            //对data赋值必须要setData，否则不会将数据赋值给视图层
+            arr = 'result[' + i + '].score'
+            //此处修改score的类型为字符串
+            //当是动物识别时返回的score是String，其他的都为unit32
+            if (res.data.result[i].score.constructor === String) {
+              that.setData({
+                [arr]: parseFloat(res.data.result[i].score).toFixed(2)
+              })
+            } else {
+              that.setData({
+                [arr]: res.data.result[i].score.toFixed(2)
+              })
+            }
+          };
+          resolve();
+          wx.hideLoading();
+        },
+        fail(res) {
+          console.log("获取失败")
+          reject();
+        },
+        complete() {}
       })
-      
+    })
 
     this.setData({
       tempFilePath: e.tempFilePath,
@@ -83,7 +84,7 @@ Page({
     //只有从index页面的跳转才添加记录
 
     if (e.prevPage == 'index') {
-      this.addRecord();
+      this.addHistoryRecord();
     } else {
       this.setData({
         id: e.id
@@ -105,7 +106,7 @@ Page({
 
 
   //存入数据库
-  addRecord: function() {
+  addHistoryRecord: function() {
     var that = this;
     var temp;
     //cloudFilePath为格式化后的云端存储路径
@@ -131,15 +132,12 @@ Page({
         db.collection('history').add({
           // data 字段表示需新增的 JSON 数据
           data: {
-            // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
-            date: util.formatTime(new Date()).slice(0, 10),
-            tempFilePath: that.data.tempFilePath,
-            fileID: that.data.fileID,
-            type: that.data.type,
-            like: false
+            history_time: util.formatTime(new Date()).slice(0, 10),
+            history_picturepath: that.data.fileID,
+            history_type: that.data.type,
+            history_like: false
           },
           success: function(res) {
-            // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
             that.data.id = res._id
           }
         })
@@ -169,7 +167,7 @@ Page({
     } else {
       wx.showToast({
         title: '取消收藏',
-        icon: 'success', 
+        icon: 'success',
       });
       db.collection('history').doc(that.data.id).update({
         // data 传入需要局部更新的数据
@@ -185,5 +183,15 @@ Page({
         }
       })
     }
+  },
+
+  onShare: function() {
+    var that = this;
+    wx.navigateTo({
+      url: '../publish/publish?tempFilePath=' + that.data.tempFilePath + '&hashtag=' + that.data.result[0].keyword,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   }
 })

@@ -1,0 +1,26 @@
+<view class="mainContainer">
+  <view class="imageContainer" bindtap="chooseImage">
+    <image class="image" src="{{tempFilePath}}" mode="aspectFill"></image>
+  </view>
+  <textarea class="input" placeholder="点击输入文字" bindinput="inputContent"></textarea>
+
+  <view class="selection" bindtap="getLocation">
+    <image class="selectionImage" src="../../images/icons/location.png" mode="widthFix"></image>
+    <view class="selectionText">
+      所在位置
+    </view>
+    <view class="location">{{location}}</view>
+  </view>
+  <view class="selection">
+    <image class="selectionImage" src="../../images/icons/hashtag.png" mode="widthFix"></image>
+    <view class="selectionText">
+      相关标签
+    </view>
+    <input class="hashtag" placeholder="输入标签，用逗号分隔"  bindinput="inputHashtag" value="{{hashtag}}"></input>
+  </view>
+
+  <view class="buttonContainer">
+    <button class="cancelButton" bindtap="cancelButtonClick">取消</button>
+    <button class="publishButton" type="primary" bindtap="publishButtonClick">发布</button>
+  </view>
+</view>

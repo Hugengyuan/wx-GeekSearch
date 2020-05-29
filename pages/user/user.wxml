@@ -2,15 +2,18 @@
   <block>
     <image src="../../images/navigationBackground.png" mode="widthFix" class="navigationBackground"></image>
   </block>
-  <view class="userInfo">
-      <open-data type="userAvatarUrl" class="userAvatar"></open-data>
-      <view class="userNickName">
-        <open-data type="userNickName" lang="zh_CN"></open-data>
-      </view>
+  <view class="userInfo" wx:if="{{scope=='false'}}">
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击授权</button>
+  </view>
+  <view class="userInfo" wx:else>
+    <open-data type="userAvatarUrl" class="userAvatar"></open-data>
+    <view class="userNickName">
+      <open-data type="userNickName"></open-data>
+    </view>
   </view>
 
   <view class="userService">
-  
+
     <view class="userService-item" bindtap="historyClick">
       <view class="userService-header">
         <image src="../../images/icons/service_history.png" mode="widthFix" class="userService-icon"></image>

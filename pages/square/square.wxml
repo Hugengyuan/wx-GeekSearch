@@ -1,0 +1,33 @@
+<!--pages/square/square.wxml-->
+<!-- <block>
+  <image src="../../images/navigationBackground.png" mode="widthFix" class="navigationBackground"></image>
+</block> -->
+<view class="mainContainer">
+  <view class="navigation">
+    <view class="navigationtext">最新消息</view>
+  </view>
+
+  <view class="messageContainer">
+    <view class="hidenhead">
+      <view class="hidenheadtext">下拉刷新</view>
+    </view>
+    <view class="message" wx:for="{{list}}" wx:for-index="index">
+      <view class="infoContainer" bindtap="onMessage" data-index="{{index}}">
+        <image class="avatar" src="{{list[index].message_avatarURL}}" mode="widthFix"></image>
+        <view class="nameContainer ">
+          <view class="nickName ">{{list[index].message_username}}</view>
+          <view class="time ">{{list[index].message_time}}</view>
+        </view>
+
+      </view>
+      <view class="contentContainer" bindtap="onMessage" data-index="{{index}}">
+        <image class="contentImage" src="{{list[index].message_picturepath}}" mode="widthFix"></image>
+        <view class="rightContainer">
+          <view class="contentKeyword">{{list[index].message_hashtag}}</view>
+          <view class="content">{{list[index].message_info}}</view>
+        </view>
+      </view>
+    </view>
+    <image src="../../images/icons/publish.png" mode="widthFix" class="publish" bindtap="onPublish"></image>
+  </view>
+</view>
